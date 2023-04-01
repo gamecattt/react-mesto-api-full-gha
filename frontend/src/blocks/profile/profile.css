@@ -1,0 +1,21 @@
+.profile {
+  color: #fff;
+  display: grid;
+  margin-bottom: 50px;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 30px;
+}
+
+@media screen and (max-width: 918px) {
+  .profile {
+    grid-template-columns: auto;
+    padding: 0 19px;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .profile {
+    margin-bottom: 36px;
+  }
+}

@@ -1,0 +1,19 @@
+.post__btn-trash {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  min-width: 18px;
+  min-height: 19px;
+  padding: 0;
+  transition: opacity 0.2s;
+  background-image: url(../../../images/icon-trash.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.post__btn-trash:hover {
+  opacity: 0.5;
+}

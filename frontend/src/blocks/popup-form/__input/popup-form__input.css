@@ -1,0 +1,8 @@
+.popup-form__input {
+  background-color: #fff;
+  color: #000;
+}
+
+.popup-form__input:focus {
+  border-color: #000;
+}

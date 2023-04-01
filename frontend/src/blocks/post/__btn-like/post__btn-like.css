@@ -1,0 +1,16 @@
+.post__btn-like {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  min-width: 22px;
+  min-height: 19px;
+  padding: 0;
+  transition: opacity 0.2s;
+  background-image: url(../../../images/icon-like.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.post__btn-like:hover {
+  opacity: 0.5;
+}

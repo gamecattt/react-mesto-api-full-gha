@@ -1,0 +1,8 @@
+.form__error-msg {
+  font-size: 12px;
+  line-height: 15px;
+  color: #ff0000;
+  min-height: 30px;
+  display: block;
+  margin-bottom: 1px;
+}

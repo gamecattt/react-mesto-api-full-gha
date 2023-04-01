@@ -1,0 +1,21 @@
+.header {
+  margin: 45px 0 40px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid rgba(84, 84, 84, 0.7);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media screen and (max-width: 918px) {
+  .header {
+    margin-top: 28px;
+    padding: 0 27px 31px;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .header {
+    margin-bottom: 42px;
+  }
+}
