@@ -49,9 +49,9 @@ class Api {
 }
 
 const api = new Api({
-  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-55',
+  baseUrl: 'https://gamecatisback.nomoredomains.work',
   headers: {
-    authorization: 'ed4e911e-6353-4900-9ec4-20f0fd0a915f',
+    authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDE5YzNlMTAxZmFhMDZmOTY3ZWQwNTUiLCJpYXQiOjE2Nzk0MTAxODgsImV4cCI6MTY4MDAxNDk4OH0.wHdoEX8zMMSZWbkrMLQRb9WFsLWQvJrqgWvnRzMJZzI',
     'Content-Type': 'application/json',
   },
 });
