@@ -1,10 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const { errors, celebrate, Joi } = require('celebrate');
-const {
-  login,
-  createUser,
-} = require('./controllers/users');
+const { login, createUser } = require('./controllers/users');
 const NotFoundError = require('./errors/not-found-err');
 const constants = require('./utils/constants');
 
@@ -15,17 +12,17 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 const allowedCors = [
   'https://gamecattt.nomoredomains.work',
   'http://gamecattt.nomoredomains.work',
-  'localhost:3000'
+  'localhost:3000',
 ];
 
-app.use(function(req, res, next) {
+app.use((req, res, next) => {
   const { origin } = req.headers;
   const { method } = req;
-  const DEFAULT_ALLOWED_METHODS = "GET,HEAD,PUT,PATCH,POST,DELETE";
+  const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
   const requestHeaders = req.headers['access-control-request-headers'];
 
   if (allowedCors.includes(origin)) {
-    res.header('Access-Control-Allow-Origin', "*");
+    res.header('Access-Control-Allow-Origin', '*');
   }
 
   if (method === 'OPTIONS') {
@@ -34,7 +31,7 @@ app.use(function(req, res, next) {
     return res.end();
   }
 
-  next();
+  return next();
 });
 
 app.use(express.json());
@@ -51,22 +48,30 @@ app.get('/crash-test', () => {
   }, 0);
 });
 
-app.post('/signin', celebrate({
-  body: Joi.object().keys({
-    email: Joi.string().required().email(),
-    password: Joi.string().required().min(8),
+app.post(
+  '/signin',
+  celebrate({
+    body: Joi.object().keys({
+      email: Joi.string().required().email(),
+      password: Joi.string().required().min(8),
+    }),
   }),
-}), login);
+  login
+);
 
-app.post('/signup', celebrate({
-  body: Joi.object().keys({
-    name: Joi.string().min(2).max(30),
-    about: Joi.string().min(2).max(30),
-    avatar: Joi.string().regex(constants.URL_REGEX),
-    email: Joi.string().required().email(),
-    password: Joi.string().required().min(8),
+app.post(
+  '/signup',
+  celebrate({
+    body: Joi.object().keys({
+      name: Joi.string().min(2).max(30),
+      about: Joi.string().min(2).max(30),
+      avatar: Joi.string().regex(constants.URL_REGEX),
+      email: Joi.string().required().email(),
+      password: Joi.string().required().min(8),
+    }),
   }),
-}), createUser);
+  createUser
+);
 
 app.use(auth);
 
@@ -84,9 +89,7 @@ app.use((err, req, res, next) => {
   const { code = 500, message } = err;
 
   res.status(code).send({
-    message: code === 500
-      ? 'На сервере произошла ошибка'
-      : message,
+    message: code === 500 ? 'На сервере произошла ошибка' : message,
   });
   next();
 });
