@@ -8,7 +8,7 @@ const BadRequest = require('../errors/bad-request-err');
 
 module.exports.getUsers = (req, res, next) => {
   User.find({})
-    .then((users) => res.send({ data: users }))
+    .then((users) => res.send(users))
     .catch(next);
 };
 
@@ -17,7 +17,7 @@ module.exports.getUserById = (req, res, next) => {
     .orFail(() => {
       throw new NotFoundError('Пользователь не найден');
     })
-    .then((user) => res.send({ data: user }))
+    .then((user) => res.send(user))
     .catch((err) => {
       if (err.name === 'CastError') {
         next(new BadRequest('Некорректный идентификатор'));
@@ -40,7 +40,7 @@ module.exports.createUser = (req, res, next) => {
       email,
       password: hash,
     }))
-    .then((user) => res.send({ data: user.toJSON({ useProjection: true }) }))
+    .then((user) => res.send(user.toJSON({ useProjection: true })))
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new BadRequest('Ошибка валидации'));
@@ -57,7 +57,7 @@ module.exports.getProfile = (req, res, next) => {
     .orFail(() => {
       throw new NotFoundError('Пользователь не найден');
     })
-    .then((user) => res.send({ data: user }))
+    .then((user) => res.send(user))
     .catch(next);
 };
 
@@ -68,7 +68,7 @@ module.exports.updateProfile = (req, res, next) => {
     .orFail(() => {
       throw new NotFoundError('Пользователь не найден');
     })
-    .then((user) => res.send({ data: user }))
+    .then((user) => res.send(user))
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new BadRequest('Ошибка валидации'));
@@ -85,7 +85,7 @@ module.exports.updateAvatar = (req, res, next) => {
     .orFail(() => {
       throw new NotFoundError('Пользователь не найден');
     })
-    .then((user) => res.send({ data: user }))
+    .then((user) => res.send(user))
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new BadRequest('Ошибка валидации'));
