@@ -14,7 +14,11 @@ module.exports.createCard = (req, res, next) => {
   const { name, link } = req.body;
 
   Card.create({ name, link, owner: req.user._id })
-    .then((card) => res.status(201).send({ data: card }))
+    .then(async (card) => {
+      const extendedCard = await Card.findById(card._id)
+        .populate(['owner', 'likes']);
+      res.status(201).send(extendedCard);
+    })
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new BadRequest('Ошибка валидации'));
