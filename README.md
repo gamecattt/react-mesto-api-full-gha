@@ -8,7 +8,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 51.250.101.251
+IP 51.250.101.251
 
 Frontend https://gamecattt.nomoredomains.work
 
