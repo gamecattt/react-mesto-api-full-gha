@@ -149,8 +149,8 @@ function App() {
 
   const handleRegister = (res) => {
     setTooltipState({
-      isSuccess: !!res.data,
-      text: res.data
+      isSuccess: !!res._id,
+      text: res._id
         ? 'Вы успешно зарегистрировались!'
         : 'Что-то пошло не так! Попробуйте ещё раз.',
     });

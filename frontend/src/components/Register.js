@@ -22,7 +22,7 @@ const Register = ({handleRegister}) => {
     e.preventDefault();
     auth.register(formValue.email, formValue.password).then((res) => {
       handleRegister(res);
-      if (res.data) {
+      if (res._id) {
         navigate('/sign-in', {replace: true});
       }
     }).catch((err) => handleRegister(err));

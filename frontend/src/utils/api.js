@@ -48,10 +48,12 @@ class Api {
   }
 }
 
+const token = localStorage.getItem('token');
+
 const api = new Api({
   baseUrl: 'https://gamecatisback.nomoredomains.work',
   headers: {
-    authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDE5YzNlMTAxZmFhMDZmOTY3ZWQwNTUiLCJpYXQiOjE2Nzk0MTAxODgsImV4cCI6MTY4MDAxNDk4OH0.wHdoEX8zMMSZWbkrMLQRb9WFsLWQvJrqgWvnRzMJZzI',
+    authorization: `Bearer ${token}`,
     'Content-Type': 'application/json',
   },
 });
