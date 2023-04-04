@@ -1,9 +1,4 @@
 class Api {
-  constructor({ baseUrl, headers }) {
-    this._baseUrl = baseUrl;
-    this._headers = headers;
-  }
-
   getProfile() {
     return this._request('/users/me');
   }
@@ -33,9 +28,12 @@ class Api {
   }
 
   _request(path, method = 'GET', data = null) {
-    return fetch(this._baseUrl + path, {
+    return fetch('https://gamecatisback.nomoredomains.work' + path, {
       method,
-      headers: this._headers,
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'application/json',
+      },
       ...(data ? { body: JSON.stringify(data) } : {}),
     }).then(this._callback);
   }
@@ -48,14 +46,4 @@ class Api {
   }
 }
 
-const token = localStorage.getItem('token');
-
-const api = new Api({
-  baseUrl: 'https://gamecatisback.nomoredomains.work',
-  headers: {
-    authorization: `Bearer ${token}`,
-    'Content-Type': 'application/json',
-  },
-});
-
-export default api;
+export default new Api();
